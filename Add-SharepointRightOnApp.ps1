@@ -34,7 +34,7 @@ $DisplayName = "DisplayName"
 $SharepointUrl = "https://tenant.sharepoint.com"
 
 #Autre
-$Tenantid
+$Tenantid = "tenantid"
 $SiteName = "site"
 $Permissions = "Write" # FullControl , Read ou Write
 
