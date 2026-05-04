@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory=$true)]
-    [string]$Tag
+    [string]$Tag = $null
 )
 #Variables 
 
@@ -79,11 +79,14 @@ if (-not (Test-Path -Path $folderpath -PathType Container)) {
 }
 
 #Recuperation du hash
-Get-WindowsAutoPilotInfo -OutputFile $hashpath -GroupTag $Tag
+if ($null -ne $Tag -and $Tag -ne "") {
+    Get-WindowsAutoPilotInfo -OutputFile $hashpath -GroupTag $Tag
+}
+else {
+    Get-WindowsAutoPilotInfo -OutputFile $hashpath
+}
 
 #Envoyer dans le blob storage
-
-
 $FilePath = $hashpath
 $FileName = Split-Path $FilePath -Leaf
 
